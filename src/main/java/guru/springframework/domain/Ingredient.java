@@ -10,13 +10,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Created by jt on 6/13/17.
  */
-@Data 
+@Getter
+@Setter
 @EqualsAndHashCode(exclude= {"recipe"}) 
 
 @Entity
@@ -28,7 +30,6 @@ public class Ingredient {
     private String description;
     private BigDecimal amount;
 
-    //private UnitOfMeasure uom;
 
     @ManyToOne
     private Recipe recipe;
@@ -51,6 +52,13 @@ public class Ingredient {
         this.amount = amount;
         this.uom = uom;
 	}
+
+	@Override
+	public String toString() {
+		return "Ingredient [id=" + id + ", description=" + description + ", amount=" + amount + ", uom=" + uom + "]";
+	}
+	
+	
 	
 	
 }
